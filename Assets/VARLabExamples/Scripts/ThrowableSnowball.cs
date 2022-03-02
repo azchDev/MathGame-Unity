@@ -21,7 +21,7 @@ namespace TigerTail
     {
         [Tooltip("Prefab for the particle effect to play when this snowball impacts after throwing.")]
         [SerializeField] private GameObject impactEffectPrefab;
-
+        SnowballGenerator sbo;
         /// <summary>Rigidbody attached to this object.</summary>
         private Rigidbody rb;
 
@@ -42,6 +42,8 @@ namespace TigerTail
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
+            sbo = GameObject.FindGameObjectWithTag("SBG").GetComponent<SnowballGenerator>();
+            
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -64,9 +66,12 @@ namespace TigerTail
             if (Helpers.TryGetInterface(out IDamageable victim, obj))
             {
                 victim.TakeDamage(impactDamage);
+                sbo.currentSnowballs--;
+                Destroy(gameObject);
             }
-
+            
             Instantiate(impactEffectPrefab, transform.position, Quaternion.identity);
+            
 
             state = State.Pickup;
         }

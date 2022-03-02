@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.2850269, g: 0.3713935, b: 0.49601045, a: 1}
+  m_IndirectSpecularColor: {r: 0.28502658, g: 0.37139305, b: 0.4960094, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -160,8 +160,8 @@ MonoBehaviour:
   - {fileID: 1074912429}
   useStartingLocationAsDestination: 1
   mode: 0
-  moveSpeed: 4.39
-  activator: 2
+  moveSpeed: 8
+  activator: 1
   deactivateMode: 2
   OnArrival:
     m_PersistentCalls:
@@ -238,7 +238,8 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.4713778, z: -0, w: 0.88193136}
   m_LocalPosition: {x: 29.78, y: 0.75, z: 48.37}
   m_LocalScale: {x: 10, y: 0.2, z: 10}
-  m_Children: []
+  m_Children:
+  - {fileID: 1165175362}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 56.248, z: 0}
@@ -443,6 +444,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &705630995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5528824726553203125, guid: 8f1f2ad426747df44af7aa6b7e54f54b, type: 3}
+  m_PrefabInstance: {fileID: 918702742761964066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &742891237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 742891239}
+  - component: {fileID: 742891238}
+  m_Layer: 0
+  m_Name: EnemyGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &742891238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742891237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773b16456b030ea418f0b2a18d99f37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5876392359176208104, guid: 392174e6b53099a4ba8350575413e71d, type: 3}
+  maxEnemies: 10
+  delay: 2
+--- !u!4 &742891239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742891237}
+  m_LocalRotation: {x: -0, y: 0.37913656, z: -0, w: 0.9253408}
+  m_LocalPosition: {x: 0.66, y: 16.26, z: 36.69}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &763784247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -530,6 +582,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1165175361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1165175362}
+  - component: {fileID: 1165175363}
+  m_Layer: 0
+  m_Name: SnowballGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1165175362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165175361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 50.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 473206480}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1165175363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165175361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30837d370d9e7774d8524561ca286200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 705630995}
+  maxSnowballs: 20
+  delay: 3
 --- !u!1 &1186942220
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +761,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209660070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 87.24723, y: 34.585674, z: 69.7473}
+  m_LocalPosition: {x: 79.03, y: 7.1, z: 24.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -694,7 +792,7 @@ Transform:
   m_GameObject: {fileID: 1540857182}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.3930006, y: -0.4069999, z: 0.84999937}
-  m_LocalScale: {x: 0.30000004, y: 0.3, z: 0.30000004}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1687258585}
   m_RootOrder: 0
@@ -1234,6 +1332,10 @@ PrefabInstance:
     - target: {fileID: 5528824726553203120, guid: 8f1f2ad426747df44af7aa6b7e54f54b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528824726553203123, guid: 8f1f2ad426747df44af7aa6b7e54f54b, type: 3}
+      propertyPath: m_Radius
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5528824726553203125, guid: 8f1f2ad426747df44af7aa6b7e54f54b, type: 3}
       propertyPath: m_Name
