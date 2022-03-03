@@ -23,6 +23,7 @@ namespace TigerTail
         [Tooltip("Prefab for the particle effect to play when this snowball impacts after throwing.")]
         [SerializeField] private GameObject impactEffectPrefab;
         [SerializeField] private TextMeshPro resText;
+       
 
         /// <summary>Rigidbody attached to this object.</summary>
         private Rigidbody rb;
@@ -38,7 +39,7 @@ namespace TigerTail
             /// <summary>This object is being thrown.</summary>
             Thrown
         }
-        private State state = State.Pickup;
+        public State state = State.Pickup;
 
         
         
@@ -50,10 +51,13 @@ namespace TigerTail
             rb = this.GetComponent<Rigidbody>();
             state = State.Pickup;
             
+            
         }
         private void Start()
         {
             resText.text = $"{result}";
+            state = State.Pickup;
+            
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -93,11 +97,13 @@ namespace TigerTail
         {
             if (Helpers.TryGetInterface(out IPickerUpper pickerUpper, obj))
             {
-                
-                pickerUpper.PickupObject(this);
-                
-                 rb.constraints = RigidbodyConstraints.FreezeAll;
-                state = State.Held;
+
+                if (pickerUpper.PickupObject(this))
+                {
+
+                    rb.constraints = RigidbodyConstraints.FreezeAll;
+                    state = State.Held;
+                }
                 
             }
         }
@@ -106,6 +112,7 @@ namespace TigerTail
         public void Throw(GameObject thrower, Vector3 forceVector)
         {
             transform.SetParent(null);
+           
             rb.constraints = RigidbodyConstraints.None;
             rb.AddForce(forceVector);
             state = State.Thrown;

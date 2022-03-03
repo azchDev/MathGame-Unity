@@ -23,7 +23,7 @@ namespace TigerTail.FPSController
         [Tooltip("Force to apply to thrown objects. (Mass-dependant)")]
         [Range(500,5000)]
         [SerializeField] private float throwForce = 2000f;
-
+        
         private void Update()
         {
             HandleThrowing();
@@ -41,14 +41,15 @@ namespace TigerTail.FPSController
             }
         }
 
-        public void PickupObject(IPickup pickup)
+        public bool PickupObject(IPickup pickup)
         {
             if (this.pickup != null) // Don't pick up an object if we already have one picked up.
-                return;
+                return false;
 
             pickup.SetParentPoint(pickupLocation);        
 
             this.pickup = pickup;
+            return true;
         }
     }
 }

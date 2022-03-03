@@ -13,6 +13,7 @@ namespace TigerTail
         [SerializeField] private float rotationSpeed = 100f;
         [SerializeField] private TextMeshPro sumText;
         [SerializeField] private int maxOperator;
+        private GameObject mainScore;
 
         public Sum sum { get; private set; }
 
@@ -28,10 +29,16 @@ namespace TigerTail
         public void TakeDamage(GameObject obj)
         {
             //check sum vs result
+            mainScore = GameObject.Find("MainScore");
             if (sum.R == obj.GetComponent<ThrowableSnowball>().result)
             {
+                mainScore.GetComponent<MainScore>().AddScore(1,"Good Job!");
                 Destroy(obj);
                 Destroy(gameObject);
+            }
+            else
+            {
+                mainScore.GetComponent<MainScore>().AddScore(0, $"Missed and hit: {gameObject.GetComponent<Enemy>().sum.Str}");
             }
             
         }
@@ -41,7 +48,9 @@ namespace TigerTail
         // Start is called before the first frame update
         void Awake()
         {
+            
             startPosition = new Vector3(transform.position.x,1.0f,transform.position.z);
+            gameObject.transform.Rotate(0, 180, 0);
             sum = new Sum(maxOperator);
             sumText.text = $"{sum.X} + {sum.Y}";
         }
@@ -91,7 +100,7 @@ namespace TigerTail
             int rotateWait = Random.Range(0, 1);
             int rotateLR = Random.Range(0, 3);
             int walkWait = Random.Range(1, 2);
-            int walkTime = Random.Range(1, 3);
+            int walkTime = Random.Range(1, 7);
             isWandering = true;
 
             yield return new WaitForSeconds(walkWait);

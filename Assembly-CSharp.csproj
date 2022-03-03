@@ -76,7 +76,10 @@
     <Compile Include="Assets\VARLabExamples\Scripts\ThrowableSnowball.cs" />
     <Compile Include="Assets\VARLabExamples\Scripts\SumGenerator.cs" />
     <Compile Include="Assets\VARLabExamples\Scripts\Sum.cs" />
-    <Compile Include="Assets\VARLabExamples\Scripts\retrieveSnowballs.cs" />
+    <Compile Include="Assets\VARLabExamples\Scripts\RetrieveSnowballs.cs" />
+    <Compile Include="Assets\VARLabExamples\Scripts\MainScore.cs" />
+    <Compile Include="Assets\VARLabExamples\Scripts\CountDown.cs" />
+    <Compile Include="Assets\VARLabExamples\3DTOYS\rotatecamera.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -94,6 +97,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\VARLabExamples\3DTOYS\readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
