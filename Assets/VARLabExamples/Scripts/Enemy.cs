@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 namespace TigerTail
 {
@@ -9,6 +11,10 @@ namespace TigerTail
     {
         [SerializeField] private float movementSpeed = 3f;
         [SerializeField] private float rotationSpeed = 100f;
+        [SerializeField] private TextMeshPro sumText;
+        [SerializeField] private int maxOperator;
+
+        public Sum sum { get; private set; }
 
         private bool isWandering = false;
         private bool isRotatingLeft = false;
@@ -19,17 +25,25 @@ namespace TigerTail
         [SerializeField] private int counter=5;
         private int moves=0;
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject obj)
         {
-            Destroy(gameObject);
+            //check sum vs result
+            if (sum.R == obj.GetComponent<ThrowableSnowball>().result)
+            {
+                Destroy(obj);
+                Destroy(gameObject);
+            }
+            
         }
 
 
-
+  
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             startPosition = new Vector3(transform.position.x,1.0f,transform.position.z);
+            sum = new Sum(maxOperator);
+            sumText.text = $"{sum.X} + {sum.Y}";
         }
 
 

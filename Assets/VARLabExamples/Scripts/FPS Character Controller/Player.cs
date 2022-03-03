@@ -31,7 +31,7 @@ namespace TigerTail.FPSController
 
         private void HandleThrowing()
         {
-            if ((Input.GetMouseButtonUp(0)||Input.GetKeyDown(KeyCode.Space)) && pickup != null)
+            if ((Input.GetMouseButtonUp(0)||Input.GetKeyDown(KeyCode.E)) && pickup != null)
             {
                 if (pickup is IThrowable)
                 {

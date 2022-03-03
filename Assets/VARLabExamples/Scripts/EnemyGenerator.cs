@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TigerTail;
 using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
+    [SerializeField] private GameObject snowballTh;
+    [SerializeField] private GameObject snowballPositionAnchor;
 
     [SerializeField] private int maxEnemies = 10;
+
 
     [SerializeField] private float delay = 2f;
 
@@ -26,8 +30,15 @@ public class EnemyGenerator : MonoBehaviour
         if(currentEnemies < maxEnemies && Time.time - lastGenerateTime > delay)
         {
             var enemy = Instantiate(prefab) as GameObject;
+            var throwSnowball = Instantiate(snowballTh) as GameObject;
+            var getres = enemy.GetComponent<Enemy>();
+          
+           
+            var setres = throwSnowball.GetComponent<ThrowableSnowball>();
+            setres.result = getres.sum.R;
 
-            enemy.transform.position = new Vector3(Random.Range(transform.position.x, transform.position.x+15f), Random.Range(transform.position.x, transform.position.x + 10f), Random.Range(transform.position.z, transform.position.z + 15f));
+            throwSnowball.transform.position = snowballPositionAnchor.transform.position;
+            enemy.transform.position = new Vector3(Random.Range(transform.position.x, transform.position.x+20f), Random.Range(transform.position.y, transform.position.y + 20f), Random.Range(transform.position.z, transform.position.z + 20f));
 
             lastGenerateTime = Time.time;
             currentEnemies++;

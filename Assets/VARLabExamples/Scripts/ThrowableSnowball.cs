@@ -10,6 +10,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace TigerTail
@@ -21,9 +22,12 @@ namespace TigerTail
     {
         [Tooltip("Prefab for the particle effect to play when this snowball impacts after throwing.")]
         [SerializeField] private GameObject impactEffectPrefab;
-        SnowballGenerator sbo;
+        [SerializeField] private TextMeshPro resText;
+
         /// <summary>Rigidbody attached to this object.</summary>
         private Rigidbody rb;
+
+        public int result;
 
         public enum State
         {
@@ -36,14 +40,20 @@ namespace TigerTail
         }
         private State state = State.Pickup;
 
-        [Tooltip("Damage dealt by a snowball impact to any classes that implement the IDamageable interface.\nNote: Nothing in the base project implements IDamageable.")]
-        [SerializeField] private float impactDamage = 5f;
+        
+        
+
 
         private void Awake()
         {
-            rb = GetComponent<Rigidbody>();
-            sbo = GameObject.FindGameObjectWithTag("SBG").GetComponent<SnowballGenerator>();
             
+            rb = this.GetComponent<Rigidbody>();
+            state = State.Pickup;
+            
+        }
+        private void Start()
+        {
+            resText.text = $"{result}";
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -57,6 +67,8 @@ namespace TigerTail
                 case State.Thrown:
                     Impact(collision.gameObject);
                     break;
+  
+
             }
         }
 
@@ -65,9 +77,9 @@ namespace TigerTail
         {
             if (Helpers.TryGetInterface(out IDamageable victim, obj))
             {
-                victim.TakeDamage(impactDamage);
-                sbo.currentSnowballs--;
-                Destroy(gameObject);
+                victim.TakeDamage(gameObject);
+
+               
             }
             
             Instantiate(impactEffectPrefab, transform.position, Quaternion.identity);
@@ -81,9 +93,12 @@ namespace TigerTail
         {
             if (Helpers.TryGetInterface(out IPickerUpper pickerUpper, obj))
             {
+                
                 pickerUpper.PickupObject(this);
-                rb.constraints = RigidbodyConstraints.FreezeAll;
+                
+                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 state = State.Held;
+                
             }
         }
 
@@ -99,8 +114,10 @@ namespace TigerTail
         /// <summary>Sets the parent transform for this snowball while it's being held and resets its local position.</summary>
         public void SetParentPoint(Transform point)
         {
+           
             transform.SetParent(point);
             transform.localPosition = Vector3.zero;
+            gameObject.transform.localRotation = new Quaternion(0,0,0,0);
         }
     }
 }

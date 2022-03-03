@@ -74,6 +74,9 @@
     <Compile Include="Assets\VARLabExamples\Scripts\Ice.cs" />
     <Compile Include="Assets\VARLabExamples\Scripts\Interfaces\IPickup.cs" />
     <Compile Include="Assets\VARLabExamples\Scripts\ThrowableSnowball.cs" />
+    <Compile Include="Assets\VARLabExamples\Scripts\SumGenerator.cs" />
+    <Compile Include="Assets\VARLabExamples\Scripts\Sum.cs" />
+    <Compile Include="Assets\VARLabExamples\Scripts\retrieveSnowballs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
